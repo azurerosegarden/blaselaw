@@ -1,9 +1,12 @@
+mod case;
+mod modifiers;
 mod player;
+mod team;
 
 fn main() {
+    // Generate a new Case
+    let the_case = case::Case::new();
 
-    let mut test = player::Player::new();
-    println!("{}",test)
-
-
+    println!("{:#?}", the_case);
+    println!("{}", the_case.get_case_name())
 }

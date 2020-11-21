@@ -1,10 +1,9 @@
-use std::f32;
 use rand::prelude::*;
-use rand_distr::{Distribution, Beta};
+use rand_distr::{Beta, Distribution};
+use std::f32;
 use std::fmt;
 use std::fmt::Formatter;
 use std::io::repeat;
-
 
 #[derive(Debug)]
 struct RawStars {
@@ -135,11 +134,17 @@ impl Stats {
 
         // baserunning
         self.raw_stars.baserunning = f32::powf(self.laserlikeness, 0.5)
-            * f32::powf((self.base_thirst * self.continuation * self.ground_friction * self.indulgence), 0.1);
+            * f32::powf(
+                (self.base_thirst * self.continuation * self.ground_friction * self.indulgence),
+                0.1,
+            );
 
         // defense
         self.raw_stars.defense = f32::powf((self.omniscience * self.tenaciousness), 0.2)
-            * f32::powf((self.watchfulness * self.anticapitalism * self.chasiness), 0.1);
+            * f32::powf(
+                (self.watchfulness * self.anticapitalism * self.chasiness),
+                0.1,
+            );
 
         // convert to a real number of stars
         self.stars.litigation = (10.0 * self.raw_stars.litigation).round() as u8;
@@ -172,7 +177,10 @@ impl fmt::Display for Player {
 
 impl fmt::Display for Stars {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        write!(f, "Litigation: {}\nJudgement: {}\nLitigation: {}\nDefense: {}",
-               self.litigation, self.judgement, self.baserunning, self.defense)
+        write!(
+            f,
+            "Litigation: {}\nJudgement: {}\nLitigation: {}\nDefense: {}",
+            self.litigation, self.judgement, self.baserunning, self.defense
+        )
     }
 }

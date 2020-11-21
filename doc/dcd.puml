@@ -1,0 +1,38 @@
+@startuml
+
+
+
+class Team{
+Position[] positions
+}
+
+abstract class Position{
+string name
+int? max_players
+Player[] players
+}
+
+class Player{
+string name
+UUID uuid
+Stats stats
+}
+
+class Case{
+Team the_court
+Team the_defense
+Team the_prosecution
+}
+
+
+abstract class Modifier{
+string display_name
+setup()
+}
+
+abstract class PlayerModifier{
+}
+PlayerModifier -|> Modifier
+
+
+@enduml
